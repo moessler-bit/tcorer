@@ -84,3 +84,4 @@ require("mason-lspconfig").setup_handlers {
 
 -- require after because else is overwritten i think
 require("tcorer.lsp_configurations.lua")
+require("tcorer.lsp_configurations.clangd")
