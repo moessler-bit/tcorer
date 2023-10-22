@@ -1,5 +1,6 @@
 vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next) -- deez nuts
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('LspconfigLspKeymaps', {}),
@@ -16,7 +17,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- end, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- rename
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- code action
-        vim.keymap.set('n', '<leader>df', function() -- do format
+        vim.keymap.set('n', '<leader>cf', function() -- code format
             vim.lsp.buf.format { async = true }
         end, opts)
     end,
