@@ -1,3 +1,6 @@
 require("lspconfig").clangd.setup {
-    cmd = { "clangd" }
+    cmd = {
+        "clangd",
+        "-fallback-style=gnu",
+    }
 }
