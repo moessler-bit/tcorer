@@ -9,34 +9,62 @@ cmp.setup({
         end,
     },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        --completion = cmp.config.window.bordered(),
+        --documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
+        -- does nothing ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
         { name = 'path' },
         { name = 'luasnip' }, -- For luasnip users.
-        { name = 'buffer', keyword_length = 4 },
+        { name = 'buffer',  keyword_length = 4 },
     }),
 
     formatting = {
         format = lspkind.cmp_format {
-            with_text = true,
-            menu = {
+            mode = 'symbol',
+            preset = 'codicons',
+            symbol_map = {
+                Text = "󰉿",
+                Method = "󰆧",
+                Function = "󰊕",
+                Constructor = "",
+                Field = "󰜢",
+                Variable = "󰀫",
+                Class = "󰠱",
+                Interface = "",
+                Module = "",
+                Property = "󰜢",
+                Unit = "󰑭",
+                Value = "󰎠",
+                Enum = "",
+                Keyword = "󰌋",
+                Snippet = "", -- get into fonts
+                Color = "󰏘",
+                File = "󰈙",
+                Reference = "󰈇",
+                Folder = "󰉋",
+                EnumMember = "",
+                Constant = "󰏿",
+                Struct = "󰙅",
+                Event = "",
+                Operator = "󰆕",
+                TypeParameter = "",
+            },
+            --[[menu = {
                 buffer = "[buf]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[api]",
                 path = "[path]",
                 luasnip = "[snip]",
-            }
+            }]]--
         }
     },
     experimental = {
@@ -85,3 +113,4 @@ require("mason-lspconfig").setup_handlers {
 -- require after because else is overwritten i think
 require("tcorer.lsp_configurations.lua")
 require("tcorer.lsp_configurations.clangd")
+require("tcorer.lsp_configurations.jdtls")

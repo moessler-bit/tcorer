@@ -4,8 +4,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"rust_analyzer",
 		"clangd",
-		"dockerls",
-		"docker_compose_language_service",
-		"bashls",
+		"jdtls",
 	},
 })
